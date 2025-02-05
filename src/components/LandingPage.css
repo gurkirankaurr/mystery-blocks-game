@@ -1,0 +1,159 @@
+/* General reset and body styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(180deg, #0E0237 0%, #080253 29%, #04074D 50%, #2F7994 95.5%);
+
+    overflow: hidden;
+    color: #fff;
+  }
+  
+  /* Full-screen background with stars image */
+  .landing-page {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  /* Stars background - reducing the number of stars by changing the background size */
+.stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: 50%; /* Increased value to reduce the number of stars */
+    background-position: center;
+    z-index: 0;
+    pointer-events: none;
+    animation: moveStars 100s linear infinite; /* Slow scrolling effect */
+}
+  
+  /* Clouds at the bottom, full width and reduced height */
+  .clouds img {
+    position: absolute;
+    bottom: 0; /* Ensure clouds are aligned at the bottom */
+    left: 50%; /* Center the image horizontally */
+    transform: translateX(-50%); /* Adjust for perfect centering */
+    width: 100%; /* Full width of the screen */
+    height: auto; /* Keep the aspect ratio intact, no cropping */
+    max-height: 30%; /* Limit the height so it doesn't cover too much of the screen */
+    z-index: 1; /* Keep clouds behind other elements */
+  }
+  
+  /* Content container */
+  .content {
+    z-index: 2;
+    position: relative;
+    padding-bottom: 70px; /* Add space at the bottom for rockets */
+    display: flex;
+    flex-direction: column; /* Align title, subheading, description vertically */
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Title styling */
+  .title {
+    font-size: 4rem;
+    color: white;
+    margin-bottom: 20px;
+    animation: fadeIn 1s ease-out;
+  }
+  
+  /* Subheading styling */
+  .subheading {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: #fff;
+  }
+  
+  /* Description styling */
+  .description {
+    font-size: 1.2rem;
+    color: #ccc;
+    margin-bottom: 30px;
+    max-width: 500px;
+    line-height: 1.5;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* Play button styling */
+  .play-button {
+    background-color: red;
+    border: none;
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 20px; /* Space from the rockets */
+  }
+  
+  .play-button:hover {
+    background-color: red;
+    transform: translateY(-5px);
+  }
+  
+  .rockets {
+    position: absolute;
+    bottom: 110px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: space-between;
+    width: 350px;
+    z-index: 3;
+}
+
+/* Rocket styling */
+.rocket {
+    width: 100px;
+    animation: rocketAnimation 4s linear infinite;
+}
+
+.rocket-left {
+    animation-direction: reverse;
+}
+  
+  /* Keyframe animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes rocketAnimation {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-30px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes moveStars {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 0 100%;
+    }
+  }
+  

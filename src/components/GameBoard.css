@@ -1,0 +1,287 @@
+/* General reset and body styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(180deg, #0E0237 0%, #080253 29%, #04074D 50%, #2F7994 95.5%);
+    overflow: hidden;
+}
+
+/* Full-screen background with stars image */
+.landing-page {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding-top: 20px;
+}
+
+/* Stars background */
+.stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: 50%;
+    background-position: center;
+    z-index: 0;
+    pointer-events: none;
+    animation: moveStars 100s linear infinite;
+}
+
+/* Clouds at the bottom */
+.clouds img {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: auto;
+    max-height: 25%;
+    z-index: 1;
+}
+
+/* Content container */
+.content {
+    z-index: 2;
+    position: relative;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Title styling */
+.title {
+    font-size: 2rem;
+    color: white;
+    margin-bottom: 5px;
+    animation: fadeIn 1s ease-out;
+}
+
+/* Subheading styling */
+.subheading {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+/* Options Grid */
+.options-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 10px;
+    justify-items: center;
+}
+
+/* Button styling */
+button {
+    padding: 12px 24px;
+    background-color: transparent;
+    color: white;
+    border: none;
+    transition: opacity 0.2s ease;
+}
+
+button:hover {
+    background-color: #3b82f6;
+    transform: scale(1.05);
+}
+/* Grid Section */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 5px;
+    width: 90vw;
+    max-width: 300px;
+    height: 300px;
+    background-image: url("../assets/grid1.png");
+    background-size: cover;
+    background-position: center;
+    margin: 20px auto;
+    padding: 0px;
+}
+
+.grid-block {
+    width: 100px;
+    height: 100px;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: 0px solid transparent;
+}
+
+.flipped {
+    background-color: white;
+}
+
+.revealed-block {
+    width: 100%;  /* Ensure the block takes up the full space */
+    height: 100%; /* Ensure the block takes up the full space */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.block-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure the image fits within the block without distortion */
+}
+
+/* Adjust the cover to make it the same size */
+.cover {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+/* Adjusted sizes */
+/* Rocket container */
+.rockets-game-board {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: space-between;
+    width: 600px;
+    z-index: 3;
+}
+
+/* Rocket styling */
+.rocket-game-board {
+    width: 150px;
+    animation: rocketAnimation 4s linear infinite;
+}
+
+.rocket-left {
+    animation-direction: reverse;
+}
+
+/* button {
+    padding: 10px 20px;
+} */
+
+/* Game Finish Animation */
+.game-finish-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Correct text should be above the astronaut */
+.correct-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.correct-text {
+    font-size: 3rem;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 20px; /* Ensures it stays above astronaut */
+}
+
+/* Astronaut and rocket styling */
+.astronaut-image {
+    animation: bounce 1s ease-in-out infinite;
+    width: 300px;
+}
+
+.beside-astronaut {
+    width: 100px;
+    margin-top: 20px; /* Moves the rocket below astronaut */
+}
+
+/* Rocket Styling */
+.rockets-finish {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+  }
+/*   
+  .rocket {
+    width: 50px;
+    height: auto;
+  } */
+  
+  /* Timer Display */
+.timer {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 1.5rem;
+    color: white;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-weight: bold;
+}
+.retry-button {
+    background-color: red; /* Green background */
+    color: white; /* White text */
+    padding: 12px 24px; /* Padding for size */
+    border: none; /* No border */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 18px; /* Larger font size */
+    border-radius: 8px; /* Rounded corners */
+    margin-top: 20px; /* Space above button */
+    transition: background-color 0.3s ease; /* Smooth background color transition */
+  }
+  
+  .retry-button:hover {
+    background-color: red; /* Darker green on hover */
+  }
+  
+  .retry-button:active {
+    transform: scale(0.98); /* Slightly scale down on click */
+  }
+  
+  .retry-button:focus {
+    outline: none; /* Remove the outline when the button is focused */
+  }
+  
+  .next-button {
+    padding: 10px 20px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+  }
+  
+  .next-button:hover {
+    background-color: red;
+  }
