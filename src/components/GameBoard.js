@@ -77,6 +77,10 @@ const MysteryBlocks = () => {
     }
   }, [timeLeft, gameFinished]);
 
+  const handleGoHome = () => {
+    window.location.href = "/";
+  };
+
   // Handle answer click
   const handleAnswerClick = (answer) => {
     if (answer === currentQuestion.correctAnswer) {
@@ -168,12 +172,15 @@ const MysteryBlocks = () => {
       )}
 
       {/* Time's up screen */}
-      {showTimeUpScreen && !showCorrectAnswer && (
-        <div className="game-finish-animation">
-          <h2 className="correct-text">Time's Up! Try Again?</h2>
-          <button className="retry-button" onClick={handleRetry}>Retry</button>
-        </div>
-      )}
+{showTimeUpScreen && !showCorrectAnswer && (
+  <div className="game-finish-animation">
+    <h2 className="correct-text">Time's Up! Try Again?</h2>
+    <div className="button-group">
+      <button className="retry-button" onClick={handleRetry}>Retry</button>
+      {/* <button className="home-button" onClick={handleGoHome}>Back to Home</button> */}
+    </div>
+  </div>
+)}
 
       {/* Correct answer screen */}
       {showCorrectAnswer && !gameFinished && (
@@ -183,14 +190,16 @@ const MysteryBlocks = () => {
         </div>
       )}
 
-      {/* Show "Next" button if game completed in time */}
-      {gameFinished && timeLeft > 0 && (
-        <div className="game-finish-animation">
-          <h2 className="correct-text">Well Done!</h2>
-          {/* <img src={astronautImage} alt="Astronaut" className="astronaut-image" /> */}
-          <button className="next-button" onClick={handleRetry}>Next</button>
-        </div>
-      )}
+      {/* Show "Next" and "Home" button if game completed in time */}
+{gameFinished && timeLeft > 0 && (
+  <div className="game-finish-animation">
+    <h2 className="correct-text">Well Done!</h2>
+    <div className="button-group">
+      <button className="next-button" onClick={handleRetry}>Next</button>
+      <button className="home-button" onClick={handleGoHome}>Back to Home</button>
+    </div>
+  </div>
+)}
     </div>
   );
 };
